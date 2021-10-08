@@ -1,0 +1,28 @@
+{
+  "name": "chess-game-backend",
+  "version": "1.0.0",
+  "description": "Backend portion of my multi-player chess game",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ProjectsByJackHe/multiplayer-chess-game-backend.git"
+  },
+  "dependencies": {
+    "express": "4.17.1",
+    "socket.io": "2.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.4"
+  },
+  "author": "Jack He",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ProjectsByJackHe/multiplayer-chess-game-backend/issues"
+  },
+  "homepage": "https://github.com/ProjectsByJackHe/multiplayer-chess-game-backend#readme"
+}
