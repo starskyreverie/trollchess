@@ -9,7 +9,6 @@ import Piece from "./piece";
 import piecemap from "./piecemap";
 import { useParams } from "react-router-dom";
 import { ColorContext } from "../../context/colorcontext";
-import VideoChatApp from "../../connection/videochat";
 const socket = require("../../connection/socket").socket;
 
 class ChessGame extends React.Component {
@@ -335,12 +334,6 @@ const ChessGameWrapper = (props) => {
               gameId={gameid}
               color={color.didRedirect}
             />
-            <VideoChatApp
-              mySocketId={socket.id}
-              opponentSocketId={opponentSocketId}
-              myUserName={props.myUserName}
-              opponentUserName={opponentUserName}
-            />
           </div>
           <h4> You: {props.myUserName} </h4>
         </div>
@@ -354,10 +347,10 @@ const ChessGameWrapper = (props) => {
             style={{
               textAlign: "center",
               marginTop: String(window.innerHeight / 8) + "px",
+              fontSize: "20px",
             }}
           >
-            Hey <strong>{props.myUserName}</strong>, copy and paste the URL
-            below to send to your friend:
+            here is game code:
           </h1>
           <textarea
             style={{
@@ -376,8 +369,7 @@ const ChessGameWrapper = (props) => {
           <br></br>
 
           <h1 style={{ textAlign: "center", marginTop: "100px" }}>
-            {" "}
-            Waiting for other opponent to join the game...{" "}
+            waiting for others to join...
           </h1>
         </div>
       )}

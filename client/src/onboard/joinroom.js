@@ -41,16 +41,17 @@ class JoinRoom extends React.Component {
               style={{
                 textAlign: "center",
                 marginTop: String(window.innerHeight / 3) + "px",
+                fontSize: "20px",
               }}
             >
-              Your Username:
+              pls choose username to continue:
             </h1>
 
             <input
               style={{
                 marginLeft: String(window.innerWidth / 2 - 120) + "px",
                 width: "240px",
-                marginTop: "62px",
+                marginTop: "10px",
               }}
               ref={this.textArea}
               onInput={this.typingUserName}
@@ -61,7 +62,7 @@ class JoinRoom extends React.Component {
               style={{
                 marginLeft: String(window.innerWidth / 2 - 60) + "px",
                 width: "120px",
-                marginTop: "62px",
+                marginTop: "50px",
               }}
               disabled={!(this.state.inputText.length > 0)}
               onClick={() => {
@@ -73,7 +74,7 @@ class JoinRoom extends React.Component {
                 });
               }}
             >
-              Submit
+              enter
             </button>
           </div>
         )}

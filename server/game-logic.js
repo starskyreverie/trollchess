@@ -34,24 +34,7 @@ const initializeGame = (sio, socket) => {
   gameSocket.on("request username", requestUserName);
 
   gameSocket.on("recieved userName", recievedUserName);
-
-  // register event listeners for video chat app:
-  videoChatBackend();
 };
-
-function videoChatBackend() {
-  // main function listeners
-  gameSocket.on("callUser", (data) => {
-    io.to(data.userToCall).emit("hey", {
-      signal: data.signalData,
-      from: data.from,
-    });
-  });
-
-  gameSocket.on("acceptCall", (data) => {
-    io.to(data.to).emit("callAccepted", data.signal);
-  });
-}
 
 function playerJoinsGame(idData) {
   /**
@@ -67,7 +50,7 @@ function playerJoinsGame(idData) {
 
   // If the room exists...
   if (room === undefined) {
-    this.emit("status", "This game session does not exist.");
+    this.emit("status", "game session doesn't exist :(");
     return;
   }
   if (room.length < 2) {

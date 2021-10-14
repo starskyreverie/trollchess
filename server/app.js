@@ -2,7 +2,6 @@ import express from "express";
 import http from "http";
 import socketio from "socket.io";
 import initializeGame from "./game-logic.js";
-const app = express();
 
 /**
  * Backend flow:
@@ -12,7 +11,7 @@ const app = express();
  * - '/' path should lead to a new game instance.
  * - '/game/:gameid' path should first search for a game instance, then join it. Otherwise, throw 404 error.
  */
-
+const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
