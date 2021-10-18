@@ -317,7 +317,9 @@ const ChessGameWrapper = (props) => {
    */
 
   // get the gameId from the URL here and pass it to the chessGame component as a prop.
-  const domainName = "http://localhost:3000";
+  const domainName = process.env.NODE_ENV
+    ? "http://localhost:3000"
+    : "https://trollchess.herokuapp.com";
   const color = React.useContext(ColorContext);
   const { gameid } = useParams();
   const [play] = useSound(chessMove);
