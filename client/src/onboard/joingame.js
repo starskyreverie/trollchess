@@ -33,7 +33,9 @@ const JoinGame = (props) => {
   JoinGameRoom(gameid, props.userName, props.isCreator);
   return (
     <div>
-      <h1 style={{ textAlign: "center", marginTop: "20px" }}>lobby</h1>
+      {props.isInLobby && (
+        <h1 style={{ textAlign: "center", marginTop: "20px" }}>lobby</h1>
+      )}
     </div>
   );
 };

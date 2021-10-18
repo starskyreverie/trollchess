@@ -1,26 +1,26 @@
 export default {
   pawn: [
-    "https://upload.wikimedia.org/wikipedia/commons/0/04/Chess_plt60.png",
-    "https://upload.wikimedia.org/wikipedia/commons/c/cd/Chess_pdt60.png",
+    "https://raw.githubusercontent.com/ornicar/lila/ae01daf9ba1ba19f190d0c5ad314ae5313d144c2/public/piece/cburnett/wP.svg",
+    "https://raw.githubusercontent.com/ornicar/lila/ae01daf9ba1ba19f190d0c5ad314ae5313d144c2/public/piece/cburnett/bP.svg",
   ],
   knight: [
-    "https://upload.wikimedia.org/wikipedia/commons/2/28/Chess_nlt60.png",
-    "https://upload.wikimedia.org/wikipedia/commons/f/f1/Chess_ndt60.png",
+    "https://raw.githubusercontent.com/ornicar/lila/ae01daf9ba1ba19f190d0c5ad314ae5313d144c2/public/piece/cburnett/wN.svg",
+    "https://raw.githubusercontent.com/ornicar/lila/ae01daf9ba1ba19f190d0c5ad314ae5313d144c2/public/piece/cburnett/bN.svg",
   ],
   bishop: [
-    "https://upload.wikimedia.org/wikipedia/commons/9/9b/Chess_blt60.png",
-    "https://upload.wikimedia.org/wikipedia/commons/8/81/Chess_bdt60.png",
+    "https://raw.githubusercontent.com/ornicar/lila/ae01daf9ba1ba19f190d0c5ad314ae5313d144c2/public/piece/cburnett/wB.svg",
+    "https://raw.githubusercontent.com/ornicar/lila/ae01daf9ba1ba19f190d0c5ad314ae5313d144c2/public/piece/cburnett/bB.svg",
   ],
   king: [
-    "https://upload.wikimedia.org/wikipedia/commons/3/3b/Chess_klt60.png",
-    "https://upload.wikimedia.org/wikipedia/commons/e/e3/Chess_kdt60.png",
+    "https://raw.githubusercontent.com/ornicar/lila/ae01daf9ba1ba19f190d0c5ad314ae5313d144c2/public/piece/cburnett/wK.svg",
+    "https://raw.githubusercontent.com/ornicar/lila/ae01daf9ba1ba19f190d0c5ad314ae5313d144c2/public/piece/cburnett/bK.svg",
   ],
   queen: [
-    "https://upload.wikimedia.org/wikipedia/commons/4/49/Chess_qlt60.png",
-    "https://upload.wikimedia.org/wikipedia/commons/a/af/Chess_qdt60.png",
+    "https://raw.githubusercontent.com/ornicar/lila/ae01daf9ba1ba19f190d0c5ad314ae5313d144c2/public/piece/cburnett/wQ.svg",
+    "https://raw.githubusercontent.com/ornicar/lila/ae01daf9ba1ba19f190d0c5ad314ae5313d144c2/public/piece/cburnett/bQ.svg",
   ],
   rook: [
-    "https://upload.wikimedia.org/wikipedia/commons/5/5c/Chess_rlt60.png",
-    "https://upload.wikimedia.org/wikipedia/commons/a/a0/Chess_rdt60.png",
+    "https://raw.githubusercontent.com/ornicar/lila/ae01daf9ba1ba19f190d0c5ad314ae5313d144c2/public/piece/cburnett/wR.svg",
+    "https://raw.githubusercontent.com/ornicar/lila/ae01daf9ba1ba19f190d0c5ad314ae5313d144c2/public/piece/cburnett/bR.svg",
   ],
 };

@@ -20,11 +20,11 @@ const Piece = (props) => {
   return (
     <Image
       image={image}
-      x={props.x - 90}
-      y={props.y - 90}
+      x={props.x - 97.5}
+      y={props.y - 97.5}
       draggable={canThisPieceEvenBeMovedByThisPlayer && isItThatPlayersTurn}
-      width={isDragged ? 75 : 60}
-      height={isDragged ? 75 : 60}
+      width={isDragged ? 90 : 75}
+      height={isDragged ? 90 : 75}
       onDragStart={props.onDragStart}
       onDragEnd={props.onDragEnd}
       fill={(thisWhiteKingInCheck && "red") || (thisBlackKingInCheck && "red")}

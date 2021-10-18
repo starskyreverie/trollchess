@@ -2,7 +2,7 @@ import React from "react";
 import Game from "../model/chess";
 import Square from "../model/square";
 import { Stage, Layer } from "react-konva";
-import Board from "../assets/chessBoard.png";
+import Board from "../assets/brown.svg";
 import useSound from "use-sound";
 import chessMove from "../assets/moveSoundEffect.mp3";
 import Piece from "./piece";
@@ -11,6 +11,15 @@ import { useParams } from "react-router-dom";
 import { ColorContext } from "../../context/colorcontext";
 const socket = require("../../connection/socket").socket;
 
+const randomPiece = () => {
+  const pieces = ["p", "n", "b", "q", "k", "r"];
+  const min = Math.ceil(0);
+  const max = Math.floor(5);
+  const randomPiece = pieces[Math.floor(Math.random() * (max - min + 1) + min)];
+
+  return randomPiece;
+};
+
 class ChessGame extends React.Component {
   state = {
     gameState: new Game(this.props.color),
@@ -18,6 +27,7 @@ class ChessGame extends React.Component {
     playerTurnToMoveIsWhite: true,
     whiteKingInCheck: false,
     blackKingInCheck: false,
+    brain: "",
   };
 
   componentDidMount() {
@@ -36,6 +46,7 @@ class ChessGame extends React.Component {
         );
         this.setState({
           playerTurnToMoveIsWhite: !move.playerColorThatJustMovedIsWhite,
+          brain: randomPiece(),
         });
       }
     });
@@ -111,9 +122,9 @@ class ChessGame extends React.Component {
     });
 
     if (blackCheckmated) {
-      alert("WHITE WON BY CHECKMATE!");
+      alert("white wins by checkmate :o");
     } else if (whiteCheckmated) {
-      alert("BLACK WON BY CHECKMATE!");
+      alert("black wins by ehceckmate XD");
     }
   };
 
@@ -196,6 +207,7 @@ class ChessGame extends React.Component {
 
     return (
       <React.Fragment>
+        you must move the {this.state.brain}
         <div
           style={{
             backgroundImage: `url(${Board})`,
@@ -263,6 +275,7 @@ const ChessGameWrapper = (props) => {
   const [opponentDidJoinTheGame, didJoinGame] = React.useState(false);
   const [opponentUserName, setUserName] = React.useState("");
   const [gameSessionDoesNotExist, doesntExist] = React.useState(false);
+  const [playerUsernames, setPlayerUsernames] = React.useState([]);
 
   React.useEffect(() => {
     socket.on("playerJoinedRoom", (statusUpdate) => {
@@ -274,6 +287,10 @@ const ChessGameWrapper = (props) => {
           " Socket id: " +
           statusUpdate.mySocketId
       );
+      setPlayerUsernames((playerUsernames) => [
+        ...playerUsernames,
+        statusUpdate.userName,
+      ]);
       if (socket.id !== statusUpdate.mySocketId) {
         setOpponentSocketId(statusUpdate.mySocketId);
       }
@@ -327,7 +344,7 @@ const ChessGameWrapper = (props) => {
     <React.Fragment>
       {opponentDidJoinTheGame ? (
         <div>
-          <h4> Opponent: {opponentUserName} </h4>
+          <h4> {opponentUserName} </h4>
           <div style={{ display: "flex" }}>
             <ChessGame
               playAudio={play}
@@ -335,7 +352,7 @@ const ChessGameWrapper = (props) => {
               color={color.didRedirect}
             />
           </div>
-          <h4> You: {props.myUserName} </h4>
+          <h4>{props.myUserName} </h4>
         </div>
       ) : gameSessionDoesNotExist ? (
         <div>
@@ -369,7 +386,7 @@ const ChessGameWrapper = (props) => {
           <br></br>
 
           <h1 style={{ textAlign: "center", marginTop: "100px" }}>
-            waiting for others to join...
+            waiting for other to join...
           </h1>
         </div>
       )}

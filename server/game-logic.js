@@ -34,6 +34,10 @@ const initializeGame = (sio, socket) => {
   gameSocket.on("request username", requestUserName);
 
   gameSocket.on("recieved userName", recievedUserName);
+
+  gameSocket.on("needsAllUsernames", needsAllUsernames);
+
+  gameSocket.on("gotchu", gotchu);
 };
 
 function playerJoinsGame(idData) {
@@ -53,14 +57,13 @@ function playerJoinsGame(idData) {
     this.emit("status", "game session doesn't exist :(");
     return;
   }
+
   if (room.length < 2) {
     // attach the socket id to the data object.
     idData.mySocketId = sock.id;
 
     // Join the room
     sock.join(idData.gameId);
-
-    console.log(room.length);
 
     if (room.length === 2) {
       io.sockets.in(idData.gameId).emit("start game", idData.userName);
@@ -70,7 +73,23 @@ function playerJoinsGame(idData) {
     io.sockets.in(idData.gameId).emit("playerJoinedRoom", idData);
   } else {
     // Otherwise, send an error message back to the player.
-    this.emit("status", "There are already 2 people playing in this room.");
+    this.emit("status", "already 2 ppl in the room");
+  }
+}
+
+function needsAllUsernames() {
+  this.emit("need all ur usernames");
+}
+
+function gotchu(allUsernames) {
+  if (
+    allUsernames.usernames.length ==
+    io.sockets.adapter.rooms[allUsernames.gameId]?.length
+  ) {
+    io.to(allUsernames.gameId).emit(
+      "all usernames return",
+      allUsernames.usernames
+    );
   }
 }
 

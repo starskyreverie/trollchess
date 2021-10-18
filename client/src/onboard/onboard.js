@@ -12,6 +12,8 @@ class CreateNewGame extends React.Component {
     didGetUserName: false,
     inputText: "",
     gameId: "",
+    typedGameCode: "",
+    didGetGameCode: false,
   };
 
   constructor(props) {
@@ -49,13 +51,25 @@ class CreateNewGame extends React.Component {
     });
   };
 
+  typingGameCode = (value) => {
+    this.setState({
+      typedGameCode: value,
+    });
+  };
+
   render() {
     // !!! TODO: edit this later once you have bought your own domain.
 
     return (
       <React.Fragment>
-        {this.state.didGetUserName ? (
-          <Redirect to={"/game/" + this.state.gameId}>
+        {this.state.didGetUserName || this.state.didGetGameCode > 0 ? (
+          <Redirect
+            to={
+              this.state.didGetUserName
+                ? "/game/" + this.state.gameId
+                : "/game/" + this.state.typedGameCode
+            }
+          >
             <button
               className="btn btn-success"
               style={{
@@ -126,8 +140,10 @@ class CreateNewGame extends React.Component {
                   width: "240px",
                   marginTop: "10px",
                 }}
-                ref={this.textArea}
-                onInput={this.typingUserName}
+                value={this.state.typedGameCode}
+                onChange={(e) => {
+                  this.typingGameCode(e.target.value);
+                }}
               ></input>
               <button
                 className="btn btn-primary"
@@ -136,17 +152,13 @@ class CreateNewGame extends React.Component {
                   width: "120px",
                   marginTop: "50px",
                 }}
-                disabled={!(this.state.inputText.length > 0)}
+                disabled={!(this.state.typedGameCode.length > 0)}
                 onClick={() => {
-                  // When the 'Submit' button gets pressed from the username screen,
-                  // We should send a request to the server to create a new room with
-                  // the uuid we generate here.
-                  this.props.didRedirect();
-                  this.props.setUserName(this.state.inputText);
                   this.setState({
-                    didGetUserName: true,
+                    didGetUserName: false,
+                    didGetGameCode: true,
                   });
-                  this.send();
+                  console.log(this.state.typedGameCode);
                 }}
               >
                 join

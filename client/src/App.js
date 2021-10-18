@@ -4,6 +4,7 @@ import {
   Route,
   Redirect,
   Switch,
+  useHistory,
 } from "react-router-dom";
 import JoinRoom from "./onboard/joinroom";
 import { ColorContext } from "./context/colorcontext";
@@ -60,7 +61,10 @@ function App() {
       <Router>
         <Switch>
           <Route path="/" exact>
-            <Onboard setUserName={setUserName} />
+            <Onboard
+              setUserName={setUserName}
+              setDidRedirect={playerDidNotRedirect}
+            />
           </Route>
           <Route path="/game/:gameid" exact>
             {didRedirect ? (
