@@ -1,6 +1,9 @@
 import io from "socket.io-client";
 
-const URL = "http://localhost:8000";
+const URL =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:8000"
+    : "https://trollchess.herokuapp.com/";
 
 const socket = io(URL);
 
