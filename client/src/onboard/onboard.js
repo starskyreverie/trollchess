@@ -75,6 +75,8 @@ class CreateNewGame extends React.Component {
               style={{
                 marginLeft: String(window.innerWidth / 2 - 60) + "px",
                 width: "120px",
+                backgroundColor: "#fd4d4d",
+                borderColor: "#fd4d4d",
               }}
             >
               Start Game
@@ -86,11 +88,11 @@ class CreateNewGame extends React.Component {
               <h1
                 style={{
                   textAlign: "center",
-                  marginTop: String(window.innerHeight / 4) + "px",
+                  marginTop: String(window.innerHeight / 5) + "px",
                   fontSize: "20px",
                 }}
               >
-                pls choose username to make room:
+                Choose a username to make a room
               </h1>
               <input
                 style={{
@@ -107,6 +109,8 @@ class CreateNewGame extends React.Component {
                   marginLeft: String(window.innerWidth / 2 - 60) + "px",
                   width: "120px",
                   marginTop: "50px",
+                  backgroundColor: "#fd4d4d",
+                  borderColor: "#fd4d4d",
                 }}
                 disabled={!(this.state.inputText.length > 0)}
                 onClick={() => {
@@ -132,7 +136,7 @@ class CreateNewGame extends React.Component {
                   fontSize: "20px",
                 }}
               >
-                or enter a code to join a room
+                ...or enter a code to join a room
               </h1>
               <input
                 style={{
@@ -151,6 +155,8 @@ class CreateNewGame extends React.Component {
                   marginLeft: String(window.innerWidth / 2 - 60) + "px",
                   width: "120px",
                   marginTop: "50px",
+                  backgroundColor: "#fd4d4d",
+                  borderColor: "#fd4d4d",
                 }}
                 disabled={!(this.state.typedGameCode.length > 0)}
                 onClick={() => {

@@ -256,7 +256,6 @@ class ChessGame extends React.Component {
 
     return (
       <React.Fragment>
-        you must move the {this.state.brain}
         <div
           style={{
             backgroundImage: `url(${Board})`,
@@ -420,7 +419,7 @@ const ChessGameWrapper = (props) => {
               fontSize: "20px",
             }}
           >
-            here is game code:
+            here's your game code:
           </h1>
           <textarea
             style={{
@@ -438,8 +437,8 @@ const ChessGameWrapper = (props) => {
           ></textarea>
           <br></br>
 
-          <h1 style={{ textAlign: "center", marginTop: "100px" }}>
-            waiting for other to join...
+          <h1 style={{ textAlign: "center", marginTop: "150px" }}>
+            when someone joins the room, the game will start
           </h1>
         </div>
       )}

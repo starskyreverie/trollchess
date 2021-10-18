@@ -40,11 +40,11 @@ class JoinRoom extends React.Component {
             <h1
               style={{
                 textAlign: "center",
-                marginTop: String(window.innerHeight / 3) + "px",
+                marginTop: String(window.innerHeight / 3.5) + "px",
                 fontSize: "20px",
               }}
             >
-              pls choose username to continue:
+              Choose a username to continue
             </h1>
 
             <input
@@ -63,6 +63,8 @@ class JoinRoom extends React.Component {
                 marginLeft: String(window.innerWidth / 2 - 60) + "px",
                 width: "120px",
                 marginTop: "50px",
+                backgroundColor: "#fd4d4d",
+                borderColor: "#fd4d4d",
               }}
               disabled={!(this.state.inputText.length > 0)}
               onClick={() => {

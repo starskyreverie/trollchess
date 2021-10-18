@@ -11,6 +11,8 @@ import { ColorContext } from "./context/colorcontext";
 import Onboard from "./onboard/onboard";
 import JoinGame from "./onboard/joingame";
 import ChessGame from "./chess/ui/chessgame";
+import Header from "./Header";
+import "./App.css";
 /*
  *  Frontend flow:
  *
@@ -58,6 +60,7 @@ function App() {
         playerDidNotRedirect: playerDidNotRedirect,
       }}
     >
+      <Header />
       <Router>
         <Switch>
           <Route path="/" exact>

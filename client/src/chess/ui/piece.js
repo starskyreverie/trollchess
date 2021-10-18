@@ -32,9 +32,9 @@ const Piece = (props) => {
       onDragStart={props.onDragStart}
       onDragEnd={props.onDragEnd}
       fill={
-        (thisWhiteKingInCheck && "red") ||
-        (thisBlackKingInCheck && "red") ||
-        (isHighlighted && canThisPieceEvenBeMovedByThisPlayer && "green")
+        (thisWhiteKingInCheck && "#ff9898") ||
+        (thisBlackKingInCheck && "#ff9898") ||
+        (isHighlighted && canThisPieceEvenBeMovedByThisPlayer && "#acffcb")
       }
       id={props.id}
     />
