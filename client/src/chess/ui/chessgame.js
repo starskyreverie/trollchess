@@ -11,15 +11,6 @@ import { useParams } from "react-router-dom";
 import { ColorContext } from "../../context/colorcontext";
 const socket = require("../../connection/socket").socket;
 
-const randomPiece = () => {
-  const pieces = ["p", "n", "b", "q", "k", "r"];
-  const min = Math.ceil(0);
-  const max = Math.floor(5);
-  const randomPiece = pieces[Math.floor(Math.random() * (max - min + 1) + min)];
-
-  return randomPiece;
-};
-
 class ChessGame extends React.Component {
   state = {
     gameState: new Game(this.props.color),
@@ -27,10 +18,46 @@ class ChessGame extends React.Component {
     playerTurnToMoveIsWhite: true,
     whiteKingInCheck: false,
     blackKingInCheck: false,
-    brain: "",
+    brain: Math.random() >= 0.8 ? "n" : "p",
   };
 
   componentDidMount() {
+    const randomPieceToMove = () => {
+      const pieces = ["p", "n", "b", "q", "k", "r"];
+      const min = Math.ceil(0);
+      const max = Math.floor(5);
+
+      return pieces[Math.floor(Math.random() * (max - min + 1) + min)];
+    };
+
+    const canPieceMove = (movesArray, piece) => {
+      console.log(movesArray);
+      console.log(piece);
+      let doesMoveArrayContainPiece = false;
+
+      movesArray.forEach(function (move) {
+        if (move.piece === piece) {
+          doesMoveArrayContainPiece = true;
+        }
+      });
+
+      return doesMoveArrayContainPiece;
+    };
+
+    const getPieceToMove = (movesArray) => {
+      let randomPiece = randomPieceToMove();
+
+      while (true) {
+        if (canPieceMove(movesArray, randomPiece)) {
+          return randomPiece;
+        } else {
+          randomPiece = randomPieceToMove();
+        }
+      }
+
+      return randomPiece;
+    };
+
     console.log(this.props.myUserName);
     console.log(this.props.opponentUserName);
     // register event listeners
@@ -46,29 +73,44 @@ class ChessGame extends React.Component {
         );
         this.setState({
           playerTurnToMoveIsWhite: !move.playerColorThatJustMovedIsWhite,
-          brain: randomPiece(),
+          brain: getPieceToMove(
+            this.state.gameState.chess.moves({ verbose: true })
+          ),
         });
+        console.log(this.state.brain);
       }
     });
   }
-
   startDragging = (e) => {
     this.setState({
       draggedPieceTargetId: e.target.attrs.id,
     });
   };
 
-  movePiece = (selectedId, finalPosition, currentGame, isMyMove) => {
+  movePiece = (
+    selectedId,
+    finalPosition,
+    currentGame,
+    isMyMove,
+    brain = null
+  ) => {
     /**
      * "update" is the connection between the model and the UI.
      * This could also be an HTTP request and the "update" could be the server response.
      * (model is hosted on the server instead of the browser)
      */
+    console.log("brain is " + this.state.brain);
     var whiteKingInCheck = false;
     var blackKingInCheck = false;
     var blackCheckmated = false;
     var whiteCheckmated = false;
-    const update = currentGame.movePiece(selectedId, finalPosition, isMyMove);
+
+    const update = currentGame.movePiece(
+      selectedId,
+      finalPosition,
+      isMyMove,
+      brain
+    );
 
     if (update === "moved in the same position.") {
       this.revertToPreviousState(selectedId); // pass in selected ID to identify the piece that messed up
@@ -137,7 +179,13 @@ class ChessGame extends React.Component {
       currentBoard
     );
     const selectedId = this.state.draggedPieceTargetId;
-    this.movePiece(selectedId, finalPosition, currentGame, true);
+    this.movePiece(
+      selectedId,
+      finalPosition,
+      currentGame,
+      true,
+      this.state.brain
+    );
   };
 
   revertToPreviousState = (selectedId) => {
@@ -166,6 +214,7 @@ class ChessGame extends React.Component {
     this.setState({
       gameState: tmpGS,
       draggedPieceTargetId: "",
+      brain: this.state.brain,
     });
 
     this.setState({
@@ -240,6 +289,7 @@ class ChessGame extends React.Component {
                             }
                             whiteKingInCheck={this.state.whiteKingInCheck}
                             blackKingInCheck={this.state.blackKingInCheck}
+                            brain={this.state.brain}
                           />
                         );
                       }

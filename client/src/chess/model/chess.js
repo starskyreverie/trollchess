@@ -116,7 +116,10 @@ class Game {
     this.chessBoard = newBoard;
   }
 
-  movePiece(pieceId, to, isMyMove) {
+  movePiece(pieceId, to, isMyMove, brain = null) {
+    if (brain && pieceId[1] !== brain) {
+      return "invalid move";
+    }
     const to2D = isMyMove
       ? {
           105: 0,
@@ -179,6 +182,9 @@ class Game {
           piece: pieceId[1],
           promotion: "q",
         });
+    console.log(pieceId[1]);
+    console.log("to: " + this.toChessMove([x, y], to2D));
+    console.log("from: " + this.toChessMove(to, to2D));
 
     console.log(moveAttempt);
     // console.log(isPromotion)

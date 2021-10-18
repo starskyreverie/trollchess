@@ -15,6 +15,10 @@ const Piece = (props) => {
   const thisWhiteKingInCheck = props.id === "wk1" && props.whiteKingInCheck;
   const thisBlackKingInCheck = props.id === "bk1" && props.blackKingInCheck;
 
+  const isHighlighted = props.id.startsWith(
+    props.playerTurnToMoveIsWhite ? "w" + props.brain : "b" + props.brain
+  );
+
   // console.log("this piece ID:" + props.thisPieceTargetId)
   // console.log("dragged piece ID:" + props.draggedPieceTargetId)
   return (
@@ -27,7 +31,11 @@ const Piece = (props) => {
       height={isDragged ? 90 : 75}
       onDragStart={props.onDragStart}
       onDragEnd={props.onDragEnd}
-      fill={(thisWhiteKingInCheck && "red") || (thisBlackKingInCheck && "red")}
+      fill={
+        (thisWhiteKingInCheck && "red") ||
+        (thisBlackKingInCheck && "red") ||
+        (isHighlighted && canThisPieceEvenBeMovedByThisPlayer && "green")
+      }
       id={props.id}
     />
   );
