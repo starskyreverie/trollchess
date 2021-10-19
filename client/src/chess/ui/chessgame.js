@@ -319,7 +319,7 @@ const ChessGameWrapper = (props) => {
   const domainName =
     process.env.NODE_ENV === "development"
       ? "http://localhost:3000"
-      : "http://trollchess.xyz";
+      : "https://trollchess.xyz";
   const color = React.useContext(ColorContext);
   const { gameid } = useParams();
   const [play] = useSound(chessMove);

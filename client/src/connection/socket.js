@@ -3,7 +3,7 @@ import io from "socket.io-client";
 const URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:8000"
-    : "http://api.trollchess.xyz/";
+    : "https://trollchess.herokuapp.com/";
 
 const socket = io(URL);
 
