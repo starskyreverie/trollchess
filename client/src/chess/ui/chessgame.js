@@ -258,7 +258,7 @@ class ChessGame extends React.Component {
       <React.Fragment>
         <div
           style={{
-            backgroundImage: `url(${Board})`,
+            backgroundImage: `url(https://raw.githubusercontent.com/shug-op/handandbrain-chess/ccb4645b380fadd887bf0d1275dc0a88b627434b/client/src/chess/assets/brown.svg)`,
             width: "720px",
             height: "720px",
           }}
