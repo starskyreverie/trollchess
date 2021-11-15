@@ -419,7 +419,8 @@ const ChessGameWrapper = (props) => {
               fontSize: "20px",
             }}
           >
-            here's your game code:
+            here's your game code (tell friend to go to trollchess.xyz and paste
+            it in to the join field):
           </h1>
           <textarea
             style={{
@@ -432,7 +433,7 @@ const ChessGameWrapper = (props) => {
               console.log("sd");
               event.target.select();
             }}
-            value={domainName + "/game/" + gameid}
+            value={gameid}
             type="text"
           ></textarea>
           <br></br>
