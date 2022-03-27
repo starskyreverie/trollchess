@@ -419,8 +419,8 @@ const ChessGameWrapper = (props) => {
               fontSize: "20px",
             }}
           >
-            here's your game code (tell friend to go to trollchess.xyz and paste
-            it in to the join field):
+            Here's your game code. To get started, tell a friend to go to
+            trollchess.xyz and enter this code in the join field.
           </h1>
           <textarea
             style={{
@@ -439,7 +439,7 @@ const ChessGameWrapper = (props) => {
           <br></br>
 
           <h1 style={{ textAlign: "center", marginTop: "150px" }}>
-            when someone joins the room, the game will start
+            The game will start when someone enters the game code.
           </h1>
         </div>
       )}

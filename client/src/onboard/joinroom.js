@@ -44,7 +44,7 @@ class JoinRoom extends React.Component {
                 fontSize: "20px",
               }}
             >
-              Choose a username to continue
+              Choose a username to continue to the game:
             </h1>
 
             <input
@@ -76,7 +76,7 @@ class JoinRoom extends React.Component {
                 });
               }}
             >
-              enter
+              Join game
             </button>
           </div>
         )}

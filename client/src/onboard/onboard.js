@@ -125,7 +125,7 @@ class CreateNewGame extends React.Component {
                   this.send();
                 }}
               >
-                create
+                Create a new game
               </button>
             </div>
             <div>
@@ -168,7 +168,7 @@ class CreateNewGame extends React.Component {
                   console.log(this.state.typedGameCode);
                 }}
               >
-                join
+                Join an existing game
               </button>
             </div>
           </>
