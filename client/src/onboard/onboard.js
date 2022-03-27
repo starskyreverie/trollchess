@@ -92,7 +92,7 @@ class CreateNewGame extends React.Component {
                   fontSize: "20px",
                 }}
               >
-                Choose a username to make a room
+                To start a game, enter a username here:
               </h1>
               <input
                 style={{
@@ -136,7 +136,8 @@ class CreateNewGame extends React.Component {
                   fontSize: "20px",
                 }}
               >
-                ...or enter a code to join a room
+                To join an existing game, enter the game code your friend
+                provided you here:
               </h1>
               <input
                 style={{
