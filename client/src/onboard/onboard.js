@@ -92,7 +92,7 @@ class CreateNewGame extends React.Component {
                   fontSize: "20px",
                 }}
               >
-                To start a game, enter a username here. Check out https://askorbit.ai while waiting!
+                To start a game, enter a username here.
               </h1>
               <input
                 style={{
